@@ -1,0 +1,242 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+:root {
+  --primary: #6366f1;    /* Supermicro brand color */
+  --secondary: #10b981;  /* Trust/growth color */
+  --dark: #0f172a;       /* Professional dark */
+  --light: #f8fafc;      /* Clean light background */
+  --accent: #8b5cf6;     /* Interactive elements */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 300ms ease-in-out;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --radius: 0.5rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.5;
+  color: #1e293b;
+  background-color: var(--light);
+  transition: background-color var(--transition-normal);
+  min-height: 100vh;
+}
+
+/* REAL UI principle: Performance-first font loading */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Inter'), url('/fonts/inter.woff2') format('woff2');
+}
+
+/* REAL UI principle: Mobile-first navigation */
+.mobile-menu {
+  transform: translateX(100%);
+  transition: transform var(--transition-fast);
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+/* REAL UI principle: Video background with fallback */
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 500ms ease;
+}
+
+.video-fallback {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
+/* REAL UI principle: Form styling for B2B */
+.b2b-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.b2b-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  font-size: 16px;
+  transition: all var(--transition-fast);
+}
+
+.b2b-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.b2b-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  font-size: 16px;
+  background: white;
+  transition: all var(--transition-fast);
+}
+
+.b2b-select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.b2b-button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.b2b-button:hover {
+  background: #4f46e5;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.b2b-button:active {
+  transform: translateY(0);
+}
+
+/* REAL UI principle: Animation utilities */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in var(--transition-normal) forwards;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+/* REAL UI principle: Container system */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* REAL UI principle: Card styling */
+.card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+  overflow: hidden;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* REAL UI principle: Language-specific adjustments */
+html[lang="th"] {
+  --text-base: 1.05rem; /* Thai needs more line height */
+  letter-spacing: 0.01em;
+}
+
+html[lang="zh"] {
+  --text-base: 1.02rem; /* Chinese character optimization */
+  letter-spacing: 0.02em;
+}
+
+/* REAL UI principle: Dark mode support */
+[data-theme="dark"] {
+  --dark: #1e293b;
+  --light: #0f172a;
+  --text-color: #e2e8f0;
+  background-color: var(--light);
+  color: var(--text-color);
+}
+
+/* REAL UI principle: Responsive utilities */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  .text-4xl {
+    font-size: 2rem;
+  }
+  
+  .text-2xl {
+    font-size: 1.5rem;
+  }
+}
